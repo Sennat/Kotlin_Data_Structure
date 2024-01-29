@@ -25,7 +25,7 @@ object Employees {
             "Female",
             LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (742) 853-1262",
-            "Software Engineer",
+            "Java Software Engineer",
             90000.00,
             Department(listOf("Information Technology"))
         ),

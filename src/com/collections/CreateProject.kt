@@ -16,8 +16,7 @@ class CreateProject : Project {
                 project = PlannedProject(
                     "PROJ".plus(Random.nextInt(100, 1000)),
                     "EMPLYSYS",
-                    "",
-                    //getItem("Android Project Manager", it),
+                    getProjectManager("Android Project Manager", it),
                     getProjectDevelopers(it),
                     randNum,
                     LocalDate.of(2024, 1, 28).plusDays(Random.nextLong(365)).toString()
@@ -29,7 +28,7 @@ class CreateProject : Project {
     }
 
     private fun getRandInt() = Random.nextInt(4, 8)
-    private fun getItem(str: String, employee: Employee): String {
+    private fun getProjectManager(str: String, employee: Employee): String {
         if (str in employee.jobTitle) {
            return "{$employee.lastName, ${employee.firstName}}"
         }
