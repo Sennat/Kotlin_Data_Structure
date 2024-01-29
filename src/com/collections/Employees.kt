@@ -1,25 +1,29 @@
 package com.collections
 
+import java.time.LocalDate
+import java.time.Period
+import kotlin.random.Random
+
 //Special class which is a single instance
 object Employees {
-    val employees: List<Employee> =  listOf(
+    val employees: List<Employee> = listOf(
         Employee(
             "EMP100",
             "Bereket",
             "Hailu",
             "Male",
-            "01/05/1997",
-            "+44 (642) 254-9962",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
+            "+1 (642) 254-9962",
             "Sales Manager",
             120000.00,
-            Department(listOf("Marketing"))
+            Department(listOf("Marketing", "Finance"))
         ),
         Employee(
             "EMP101",
             "Bethelhem",
             "Abera",
             "Female",
-            "06/11/2001",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (742) 853-1262",
             "Software Engineer",
             90000.00,
@@ -30,7 +34,7 @@ object Employees {
             "Solomon",
             "Abebe",
             "Male",
-            "06/22/1975",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "1 (452) 023-8145",
             "Account Executive",
             200000.00,
@@ -41,7 +45,7 @@ object Employees {
             "Tibebe",
             "Habte",
             "Male",
-            "11/09/1971",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (952) 220-3462",
             "Marketing Coordinator",
             75000.00,
@@ -52,7 +56,7 @@ object Employees {
             "Tekeste",
             "Habete Mariam",
             "Male",
-            "03/15/1965",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (351) 378-1020",
             "Web Designer",
             840000.00,
@@ -63,7 +67,7 @@ object Employees {
             "Selamawit",
             "Tarekegn",
             "Female",
-            "02/27/1992",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (352) 117-4220",
             "Accounting Consultant",
             65000.00,
@@ -74,7 +78,7 @@ object Employees {
             "Tefera",
             "Melkamu",
             "Male",
-            "07/25/1976",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (241) 910-6475",
             "Nurse",
             115000.00,
@@ -85,7 +89,7 @@ object Employees {
             "Tafesse",
             "Lemma",
             "Male",
-            "07/11/2001",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (745) 621-3012",
             "Android Software Engineer",
             90000.00,
@@ -96,77 +100,77 @@ object Employees {
             "Etsegenet",
             "Degife",
             "Female",
-            "02/30/1981",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+1 (287) 551-3124",
             "Android Project Manager",
             250000.00,
             Department(listOf("Information Technology"))
         ),
         Employee(
-            "EMP100",
-            "Bereket",
-            "Hailu",
+            "EMP109",
+            "Kifelom",
+            "Aregawi",
             "Male",
-            "01/05/1997",
-            "+44 (642) 254-9962",
-            "Manager",
-            120000.00,
-            Department(listOf("Germany"))
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
+            "+1 (702) 625-0050",
+            "Android Software Developer",
+            850500.00,
+            Department(listOf("Information Technology"))
         ),
         Employee(
-            "EMP100",
+            "EMP110",
+            "Samrawit",
             "Bereket",
-            "Hailu",
-            "Male",
-            "01/05/1997",
+            "Female",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+44 (642) 254-9962",
-            "Manager",
-            120000.00,
-            Department(listOf("Germany"))
+            "Android Software Developer",
+            105000.00,
+            Department(listOf("Information Technology"))
         ),
         Employee(
-            "EMP100",
-            "Bereket",
-            "Hailu",
+            "EMP111",
+            "Tekeste",
+            "Samuel",
             "Male",
-            "01/05/1997",
-            "+44 (642) 254-9962",
-            "Manager",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
+            "+1 (642) 254-6974",
+            "Senior Android Software Developer",
             120000.00,
-            Department(listOf("Germany"))
+            Department(listOf("Information Technology"))
         ),
         Employee(
-            "EMP100",
-            "Bereket",
-            "Hailu",
+            "EMP112",
+            "Mekebeb",
+            "Tesfaye",
             "Male",
-            "01/05/1997",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
             "+44 (642) 254-9962",
-            "Manager",
+            "Web Developer",
             60000.00,
-            Department(listOf("Germany"))
+            Department(listOf("Information Technology"))
         ),
         Employee(
-            "EMP100",
-            "Bereket",
-            "Hailu",
+            "EMP113",
+            "Daniel",
+            "Mezigebu",
             "Male",
-            "01/05/1997",
-            "+44 (642) 254-9962",
-            "Manager",
-            120000.00,
-            Department(listOf("Germany"))
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
+            "+1 (651) 321-9876",
+            "Senior Accountant",
+            97000.00,
+            Department(listOf("Finance"))
         ),
         Employee(
-            "EMP100",
-            "Bereket",
-            "Hailu",
-            "Male",
-            "01/05/1997",
-            "+44 (642) 254-9962",
-            "Manager",
-            120000.00,
-            Department(listOf("Germany"))
+            "EMP114",
+            "Meseret",
+            "Balcha",
+            "Female",
+            LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
+            "+1 (612) 774-3612",
+            "Hr Manager",
+            68000.00,
+            Department(listOf("Human Resource"))
         )
     )
 

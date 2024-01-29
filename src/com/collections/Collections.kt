@@ -59,7 +59,7 @@ class Collections {
     fun sortData() {
         println()
         println("==== PRINT FILTER ====")
-        Employees.employees.sortedBy { item -> item.birthDate }.forEach { println(it) }
+        Employees.employees.sortedBy { item -> item.hiredDate }.forEach { println(it) }
     }
 
 
