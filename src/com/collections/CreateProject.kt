@@ -11,31 +11,31 @@ class CreateProject : Project {
 
     override fun createProject(): Set<PlannedProject> {
         println("\n====CREATE NEW PROJECT====")
-        val emply = Employees.employees.filter {
-            it.department.department.contains("Information Technology")
-        }.forEach {
-
+        Employees.employees.forEach {
+            if ("Information Technology" in it.department.department) {
                 project = PlannedProject(
                     "PROJ".plus(Random.nextInt(100, 1000)),
                     "EMPLYSYS",
-                    getItem("Android Project Manager", it),
+                    "",
+                    //getItem("Android Project Manager", it),
                     getProjectDevelopers(it),
                     randNum,
                     LocalDate.of(2024, 1, 28).plusDays(Random.nextLong(365)).toString()
                 )
                 projList.add(project)
-
+            }
         }
         return projList
     }
 
     private fun getRandInt() = Random.nextInt(4, 8)
-
-    private fun getItem(str: String, emply: Employee): String {
-        return if(str in emply.jobTitle) {
-            "{$emply.lastName, ${emply.firstName}}"
-        } else ""
+    private fun getItem(str: String, employee: Employee): String {
+        if (str in employee.jobTitle) {
+           return "{$employee.lastName, ${employee.firstName}}"
+        }
+        return ""
     }
+
     private fun getProjectDevelopers(employee: Employee): MutableList<Map<String, String>> {
         if ("Android" in employee.jobTitle) {
             if (devList.size < randNum) {

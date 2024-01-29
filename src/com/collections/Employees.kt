@@ -35,7 +35,7 @@ object Employees {
             "Abebe",
             "Male",
             LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
-            "1 (452) 023-8145",
+            "+1 (452) 023-8145",
             "Account Executive",
             200000.00,
             Department(listOf("Finance"))
@@ -123,7 +123,7 @@ object Employees {
             "Bereket",
             "Female",
             LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
-            "+44 (642) 254-9962",
+            "+1 (281) 908-1262",
             "Android Software Developer",
             105000.00,
             Department(listOf("Information Technology"))
@@ -145,7 +145,7 @@ object Employees {
             "Tesfaye",
             "Male",
             LocalDate.now().minus(Period.ofDays(Random.nextInt(365 * 30))).toString(),
-            "+44 (642) 254-9962",
+            "+1 (952) 300-4851",
             "Web Developer",
             60000.00,
             Department(listOf("Information Technology"))
