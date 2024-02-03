@@ -1,15 +1,16 @@
-package com.oop
+package com.classes
 
 import java.util.*
 
-class Convertor() : Calculator {
-    var title: String = "==== Temperature Convertor ===="
+class Convertor() : Calculation {
+    override var title: String = ""
     private var reader = Scanner(System.`in`)
     private var userInput = 0
     private var given = 0F
     private var temperature = 0F
 
     init {
+        title = ("==== Temperature Convertor ====")
         print("Please select 1 for CELSIUS 2 for FAHRENHEIT\t")
         userInput = reader.nextInt()
         do {
@@ -23,7 +24,7 @@ class Convertor() : Calculator {
     }
 
     //Alternator temperature convertor
-    override fun alternateConvertor() {
+    override fun operation() {
         when (userInput) {
             1 -> {
                 print("Enter CELSIUS temperature\t")
