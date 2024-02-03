@@ -25,7 +25,6 @@ class Calculator : Calculation {
 
     override fun operation() {
         print("Enter the two number separating by space\t")
-        //val num= readln().trim().split(", ").toList().toTypedArray()
         val num= readln().split(" ").toList().toTypedArray()
         numbers[0] = num[0].toInt()
         numbers[1] = num[1].toInt()
