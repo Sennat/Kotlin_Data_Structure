@@ -1,4 +1,4 @@
-package com.classes
+package com.classess
 
 fun main(args:  Array<String>) {
     val converter = Convertor()

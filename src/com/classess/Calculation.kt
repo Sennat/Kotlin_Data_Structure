@@ -1,4 +1,4 @@
-package com.classes
+package com.classess
 
 interface Calculation {
     public var title: String
