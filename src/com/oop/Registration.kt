@@ -2,6 +2,6 @@ package com.oop
 
 interface Registration {
 
-    fun registerStudent(course: Course, student: Student)
+    fun registerCourse(course: Course, student: Student)
 
 }

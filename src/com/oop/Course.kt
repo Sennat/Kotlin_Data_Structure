@@ -17,7 +17,7 @@ data class Course(
                 "Course ID: $courseID\n" +
                 "Course Name: $courseName\n" +
                 "Course Semester: $courseSemester\n" +
-                "Course Duration: $courseDuration\n" +
+                "Course Duration: $courseDuration Weeks\n" +
                 "Course Size: $courseSize\n" +
                 "Course Instructor: ${courseInstructor.firstName} ${courseInstructor.lastName}\n" +
                 "Start Date: $courseStart\n" +

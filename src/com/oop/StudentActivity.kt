@@ -1,69 +1,64 @@
 package com.oop
 
+import java.util.*
 import kotlin.random.Random
 import kotlin.system.exitProcess
 
 class StudentActivity {
+    //private var studentsList = mutableListOf<Student>()
     private var registrationList = mutableListOf<Map<String, Student>>()
     private lateinit var course: Course
     private lateinit var student: Student
-    private var menu = 0
+    private var yesNo = ""
 
     init {
-        println("==== CITY COLLAGE MANAGEMENT SYSTEM ====")
+        println("\n==== CITY COLLAGE MANAGEMENT SYSTEM ====")
+        menu()
+        do {
+            print("\nPlease enter Y to proceed or N to exit:\t")
+            yesNo = readln().uppercase(Locale.getDefault())
+            if (yesNo.contentEquals("Y")) {
+                menu()
+            } else {
+                exitProcess(1)
+            }
+        } while (true)
+
+    }
+
+    private fun menu() {
         println("Please Select To Proceed Next Operation")
-        menu().forEach { println(it) }
-        menu = readln().toInt()
+        menuSelector().forEach { println(it) }
 
-        when (menu) {
-            1 -> {
-                enrollStudent()
-                println("\nPlease Select To Proceed Next Operation")
-                menu().forEach { println(it) }
-                menu = readln().toInt()
-            }
-
-            2 -> {
-                getAllCourses()
-                println("\nPlease Select To Proceed Next Operation")
-                menu().forEach { println(it) }
-                menu = readln().toInt()
-            }
-
-            3 -> {
-                getAllRegistration()
-                println("\nPlease Select To Proceed Next Operation")
-                menu().forEach { println(it) }
-                menu = readln().toInt()
-            }
-
+        when (readln().toInt()) {
+            1 -> enrollStudent()
+            2 -> getAllEnrolledStudent()
+            3 -> getAllCourses()
             4 -> {
-                val name = readln()
-                searchCourseByName(name)
-                println("\nPlease Select To Proceed Next Operation")
-                menu().forEach { println(it) }
-                menu = readln().toInt()
+                print("Please enter course name:\t")
+                searchCourseByName(readln())
             }
 
-            5 -> {
-                courseRegistration()
-                println("\nPlease Select To Proceed Next Operation")
-                menu().forEach { println(it) }
-                menu = readln().toInt()
+            5 -> registerCourse()
+            6 -> {
+                print("Please provide student ID:\t")
+                searchAllCoursesByStudentID(readln())
             }
 
-            6 -> exitProcess(1)
+            7 -> getAllRegistration()
+
         }
     }
 
-    private fun menu(): Array<String> {
+    private fun menuSelector(): Array<String> {
         val array = arrayOf(
-            "ENROLL STUDENT ==> 1",
-            "COURSES LIST ==> 2",
-            "REGISTRATION LIST ==> 3",
-            "SEARCH COURSE BY NAME ==> 4",
-            "REGISTER COURSE ==> 5",
-            "EXIT ==> 6"
+            "1 => ENROLL STUDENT",
+            "2 => LIST ENROLLED STUDENTS",
+            "3 => LIST ALL COURSES",
+            "4 => SEARCH COURSE BY NAME",
+            "5 => REGISTER A COURSE",
+            "6 => LIST REGISTERED COURSES BY STUDENT ID",
+            "7 => LIST ALL REGISTERED STUDENT"
         )
         return array
     }
@@ -80,15 +75,26 @@ class StudentActivity {
         val birthdate = readln()
         print("Enter Your phone eg. (123) 456-7890: \t")
         val phone = readln()
-        student = Student(generateStudentID(), firstname, lastname, gender, birthdate, phone)
+        student = Student(
+            generateStudentID(),
+            firstname.capitalizeWord(),
+            lastname.capitalizeWord(),
+            gender.capitalizeWord(),
+            birthdate,
+            phone
+        )
         StudentEnrollment().enrollStudent(student)
     }
 
-    private fun getAllCourses() {
-        Courses.courses.forEach { println(it) }
+    private fun getAllEnrolledStudent() {
+        if (StudentEnrollment().getEnrolledStudents().isEmpty()) {
+            println("Sorry!! the list is empty")
+        } else {
+            StudentEnrollment().getEnrolledStudents().forEach { println(it) }
+        }
     }
 
-    private fun courseRegistration() {
+    private fun registerCourse() {
         print("Enter Your Firstname: \t")
         val firstname = readln()
         print("Enter Your Lastname: \t")
@@ -99,22 +105,41 @@ class StudentActivity {
         val birthdate = readln()
         print("Enter Your phone eg. (123) 456-7890: \t")
         val phone = readln()
-        Student(generateStudentID(), firstname, lastname, gender, birthdate, phone)
+        Student(
+            generateStudentID(),
+            firstname.capitalizeWord(), lastname.capitalizeWord(), gender.capitalizeWord(), birthdate, phone
+        )
 
         println("Please enter course ID or course name:\t")
         val courseIDorName = readln()
         Courses.courses.forEach {
             if (it.courseID.contentEquals(courseIDorName) || it.courseName.contentEquals(courseIDorName)) {
-                registrationList.add(mapOf(it.courseID to student))
+                if (!CourseRegistration().getRegistrationList().containsKey(it.courseID)) {
+                    registrationList.add(mapOf(it.courseID to student))
+                    CourseRegistration().registerCourse(it, student)
+                }
+
+                //registrationList.forEach { println(it) }
             }
         }
+    }
+
+    private fun getAllCourses() {
+        Courses.courses.forEach { println(it) }
+    }
+
+    private fun searchAllCoursesByStudentID(studentID: String) {
+        CourseRegistration().getRegistrationList().filterKeys { it.contentEquals(studentID.capitalizeWord()) }
     }
 
     private fun generateStudentID() = "STD".plus(Random.nextInt(100, 999))
 
     private fun getAllRegistration() {
-        registrationList.add(CourseRegistration().getRegistrationList())
-        registrationList.forEach { println(it) }
+        if (CourseRegistration().getRegistrationList().isEmpty()) {
+            println("Sorry!! Registration list is empty")
+        } else {
+            CourseRegistration().getRegistrationList().forEach { println(it) }
+        }
     }
 
     private fun searchCourseByName(name: String) {
@@ -122,9 +147,12 @@ class StudentActivity {
             if (it.courseName.contentEquals(name)) {
                 println(it)
             } else {
-                println("Sorry!! Course not found")
+                println("Sorry!! Course couldn't be found")
             }
         }
     }
 
+    private fun String.capitalizeWord(): String {
+        return this.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
+    }
 }

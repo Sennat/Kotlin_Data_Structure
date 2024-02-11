@@ -4,6 +4,8 @@ import java.time.LocalDate
 import kotlin.random.Random
 
 object Courses {
+    private val localDate: LocalDate by lazy { LocalDate.now().plusMonths(Random.nextLong(1, 12)) }
+
     val courses = listOf<Course>(
         Course(
             "PSY".plus(getRandNum()),
@@ -12,12 +14,12 @@ object Courses {
             12,
             25,
             Instructor("Anna", "Tylor", "BS Computer Science", "Information Technology", "Data Structure"),
-            LocalDate.now().plusMonths(Random.nextLong(1, 12)),
-            localDate()
+            localDate,
+            localDate.plusWeeks(12)
         ),
     )
 
     private fun getRandNum() = Random.nextInt(100, 999)
 
-    private fun localDate(): LocalDate = LocalDate.now().plusMonths(Random.nextLong(3, 12))
+    //private fun localDate(): LocalDate = localDate.plusMonths(Random.nextLong(1, 12))
 }
