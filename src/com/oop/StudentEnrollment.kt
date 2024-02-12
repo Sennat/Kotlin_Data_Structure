@@ -1,22 +1,19 @@
 package com.oop
 
-class StudentEnrollment : Enrollment {
-    private var enrollmentList = mutableListOf<Student>()
+class StudentEnrollment : Enrollment() {
 
     fun enrollStudent(student: Student) {
         if (isStudentEnrolled(student)) {
-            println("Opps! Student already enrolled")
+            println("Student ${student.firstName} has been enrolled")
         } else {
-            enrollmentList.add(student)
+            println("Student ${student.firstName} couldn't be enrolled")
         }
     }
 
-    override fun isStudentEnrolled(student: Student): Boolean {
-        return enrollmentList.contains(student)
-    }
+    fun getEnrolledStudent(studentID: String): Student? = getStudentById(studentID)
 
     fun getEnrolledStudents(): List<Student> {
-        return enrollmentList
+        return getEnrollmentList()
     }
 
 }

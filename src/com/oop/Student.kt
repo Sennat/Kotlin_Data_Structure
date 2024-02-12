@@ -9,8 +9,7 @@ data class Student(
     val phone: String
 ) {
     override fun toString(): String {
-        return "\n" +
-                "\nStudent ID: $studentID\n" +
+        return "Student ID: $studentID\n" +
                 "Firstname: $firstName\n" +
                 "Lastname: $lastName\n" +
                 "Gender: $gender\n" +

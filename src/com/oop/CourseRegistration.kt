@@ -1,7 +1,9 @@
 package com.oop
 
 class CourseRegistration : Registration {
-    private var registrationList = mutableMapOf<String, Student>()
+    companion object {
+        private var registrationList = mutableMapOf<String, Student>()
+    }
 
     override fun registerCourse(course: Course, student: Student) {
         if (!isStudentRegistered(student)) {

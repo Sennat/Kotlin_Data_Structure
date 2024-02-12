@@ -13,7 +13,7 @@ data class Course(
     val courseEnd: LocalDate
 ) {
     override fun toString(): String {
-        return "\n==== LIST OF COURSES ====\n" +
+        return "==== LIST OF COURSES ====\n" +
                 "Course ID: $courseID\n" +
                 "Course Name: $courseName\n" +
                 "Course Semester: $courseSemester\n" +
